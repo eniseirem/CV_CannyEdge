@@ -110,7 +110,7 @@ def Canny_detector(img, weak_th=None, strong_th=None):
     return mag
 
 
-frame = cv2.imread('inputimg2.jpg')
+frame = cv2.imread('1.jpeg')
 
 # calling the designed function for
 # finding edges

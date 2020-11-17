@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from matplotlib import pyplot as plt
 
-img = cv2.imread('inputimg2.jpg', cv2.IMREAD_UNCHANGED)
+img = cv2.imread('imgs/inputimg2.jpg')
 
 # Noise reduction step
 
@@ -10,12 +10,12 @@ img = cv2.imread('inputimg2.jpg', cv2.IMREAD_UNCHANGED)
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 #the remove more noice I used bilateralFilter
-blurred = cv2.bilateralFilter(gray,10,200,200)
+blurred = cv2.bilateralFilter(gray,10,150,200)
 #blurred = cv2.GaussianBlur(gray, (5, 5), 1.4)
 
 #This is the median method for lower and higher threshold.
 v = np.median(blurred)
-sigma = 0.33
+sigma = 1.4
 
 lower_thresh = int(max(0, (1.0 - sigma) * v))
 upper_thresh = int(min(255, (1.0 + sigma) * v))
@@ -32,5 +32,10 @@ plt.subplot(122),plt.imshow(edges, cmap="gray")
 plt.title('Edge Image'), plt.xticks([]), plt.yticks([])
 
 plt.show()
+
+
+
+
+
 
 
